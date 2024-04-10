@@ -6,8 +6,7 @@ $(function(){
     }
 
     function removeError(input){
-        // if($(input.siblings('div.h6').length)
-        input.remove('is-invalid');
+        input.removeClass('is-invalid');
         $(input.siblings('div.h6')).remove();
     }
 
@@ -33,6 +32,12 @@ $(function(){
         var passwordConf = $('.reg input[name="password-confirm"]');
         var name = $('.reg input[name="name"]');
         var ok = true;
+        $.each($('.reg input'),function(){
+            if($(this).val()=="")
+                $(this).addClass('is-invalid');
+            else
+                $(this).removeClass('is-invalid');
+        });
         if(email.val()=="" || login.val()=="" || password.val()=="" || passwordConf.val()=="" || name.val()=="")
         {
             $('.reg div.h6').html('');
@@ -77,35 +82,6 @@ $(function(){
             else
                 removeError(name);
         }
-
-
-
-        // if(email.val()=="")
-        //     email.addClass('is-invalid');
-        // else
-        //     email.removeClass('is-invalid');
-
-        // if(login.val()=="")
-        //     login.addClass('is-invalid');
-        // else
-        //     login.removeClass('is-invalid');
-
-        // if(password.val()=="")
-        //     password.addClass('is-invalid');
-        // else
-        //     password.removeClass('is-invalid');
-
-        // if(passwordConf.val()=="")
-        //     passwordConf.addClass('is-invalid');
-        // else
-        //     passwordConf.removeClass('is-invalid');
-
-        // $.each($('.reg input'),function(){
-        //     if($(this).val()=="")
-        //         $(this).addClass('is-invalid');
-        //     else
-        //         $(this).removeClass('is-invalid');
-        // });
     });
     // END Register form validation
 

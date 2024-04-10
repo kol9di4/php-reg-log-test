@@ -4,16 +4,28 @@ include_once("FileStorage.php");
 
 $dbConnecton = FileStorage::getInstance('DataBase/db.json');
 
+
+$password = password_hash('admin',PASSWORD_DEFAULT);
+
 // $dbConnecton->create([
 //     'login' => 'admin',
-//     'pasword' => 'admin',
+//     'password' => $password,
 //     'email' => 'admin@admin',
 //     'name' => 'Vasya'
 // ]);
+$pass1 = $dbConnecton->get(3)['password'];
+$pass2 = $dbConnecton->get(2)['password'];
+echo '<pre>';
+var_dump($pass1);
+var_dump($pass2);
+echo '</pre>';
+if (password_verify('admin', $pass1)) {
+    echo '2 ok';
+} 
+if (password_verify('admin', $pass2)) {
+    echo '3 ok';
+} 
 
-// echo '<pre>';
-// var_dump($dbConnecton->get(1));
-// echo '</pre>';
 
 ?>
 
