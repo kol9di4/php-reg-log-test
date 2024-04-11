@@ -71,30 +71,27 @@ $(function(){
         if(!ok)
             return false;
         const data = {
-            login: logn.val(),
+            login: login.val(),
             password: password.val(),
             email: email.val(),
             name: name.val()
         };
-        // $.ajax({
-        //     url: "core/ajax-helper/register.php", 
-        //     type: "post",
-        //     data: data,
-        //     success: function (response) {
-        //         if(response){
-        //             $('#regModal').modal('hide');
-        //             log(data);
-        //         }
-        //         else
-        //         {
-        //             $('.reg button[type=submit] ~ div.h6').remove();
-        //             $('.reg button[type=submit]').after('<div class="h6 text-danger">Пользователь с таким именем уже существует!</div>');
-        //         }
-        //     },
-        //     error: function (error) {
-        //         console.error("Ошибка при отправке данных: ", error);
-        //     },
-        // });
+        $.ajax({
+            // url: "ajax-helper/register.php", 
+            url: "index.php?c=register", 
+            type: "post",
+            data: data,
+            success: function (response) {
+                response = JSON.parse(response);
+                for (key in response){
+                    console.log(key);
+                    console.log(response[key]);
+                }
+            },
+            error: function (error) {
+                alert("Ошибка при отправке данных: ", error);
+            },
+        });
 
         
     });

@@ -14,10 +14,10 @@ class User{
     public function collectInfo():array
     {
         return [
-            $this->login,
-            $this->password,
-            $this->email,
-            $this->name
+            'login' => $this->login,
+            'password' => $this->password,
+            'email' => $this->email,
+            'name' => $this->name
         ];
     }
 }

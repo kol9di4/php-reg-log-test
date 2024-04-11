@@ -2,6 +2,8 @@
 
 namespace System;
 
+use System\Exceptions;
+
 class FileStorage {
 	protected array $records = [];
 	protected int $ai = 0;
@@ -24,6 +26,10 @@ class FileStorage {
 			$this->records = $data['records'];
 			$this->ai = $data['ai'];
 		}
+	}
+	
+	public function getRecords(){
+		return $this->records;
 	}
 
 	public function create(array $fields) : int{
