@@ -5,7 +5,7 @@ use System\UserReg;
 use System\FileStorageHelper as FileHelp;
 
 $userLogin = $_POST['login'];
-$userPassword = password_hash($_POST['password'],PASSWORD_DEFAULT);
+$userPassword = $_POST['password'];
 $userEmail = $_POST['email'];
 $userName = $_POST['name'];
 

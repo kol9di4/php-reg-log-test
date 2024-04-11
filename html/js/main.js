@@ -10,8 +10,6 @@ $(function(){
         $(input.siblings('div.h6')).remove();
     }
 
-
-
     $('.log').on('submit',function(e){
         // e.preventDefault();
         // var login = $('.reg input[name="login"]');
@@ -61,13 +59,18 @@ $(function(){
             ok = false;
         }
 
-        if (login.val().length<4){
-            addError(login,'Логин меньше 4 символов');
+        if (login.val().length<6){
+            addError(login,'Логин меньше 6 символов');
             ok = false;
         }
 
         if (name.val().length<2){
             addError(name,'Имя меньше 2 символов');
+            ok = false;
+        }
+        
+        if (name.val().length>10){
+            addError(name,'Имя больше 10 символов');
             ok = false;
         }
 
@@ -79,6 +82,7 @@ $(function(){
             email: email.val(),
             name: name.val()
         };
+
         $.ajax({
             // url: "ajax-helper/register.php", 
             url: "index.php?c=register", 
@@ -98,9 +102,7 @@ $(function(){
             error: function (error) {
                 alert("Ошибка при отправке данных: ", error);
             },
-        });
-
-        
+        });        
     });
     // END Register form validation
 
