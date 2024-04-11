@@ -9,8 +9,8 @@ class User{
         protected string $password,
         protected string $email,
         protected string $name
-    )
-    {}
+    ){}
+
     public function collectInfo():array
     {
         return [
