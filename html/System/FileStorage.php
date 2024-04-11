@@ -1,4 +1,7 @@
 <?php
+
+namespace System;
+
 class FileStorage {
 	protected array $records = [];
 	protected int $ai = 0;

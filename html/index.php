@@ -1,6 +1,8 @@
 <?php
 
-include_once("FileStorage.php");
+include_once('ini.php');
+
+use System\FileStorage as FileStorage;
 
 $dbConnecton = FileStorage::getInstance('DataBase/db.json');
 

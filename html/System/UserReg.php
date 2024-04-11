@@ -1,6 +1,6 @@
 <?php
 
-namespace System\RegUser;
+namespace System;
 
 use System\BaseClases\User;
 

@@ -1,6 +1,6 @@
 <?php
 
-use System\RegUser\RegUser;
+use System\RegUser;
 
 $userLogin=$_POST['login'];
 $userPassword=$_POST['password'];
