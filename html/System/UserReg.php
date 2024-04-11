@@ -10,8 +10,9 @@ class UserReg extends User{
 
     protected IFieldsValidator $validator;
 
-    public function setValidator(IFieldsValidator $validator){
+    public function setValidator(IFieldsValidator $validator):self{
         $this->validator = $validator;
+        return $this;
     }
 
     public function userRegister():array{
@@ -20,7 +21,7 @@ class UserReg extends User{
             $this->password = password_hash($this->password,PASSWORD_DEFAULT);
             return [];
         }
-        
+
         return $errors;
     }
 
