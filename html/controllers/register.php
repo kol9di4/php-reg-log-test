@@ -4,10 +4,10 @@
 use System\UserReg;
 use System\FileStorageHelper as FileHelp;
 
-$userLogin=$_POST['login'];
-$userPassword=$_POST['password'];
-$userEmail=$_POST['email'];
-$userName=$_POST['name'];
+$userLogin = $_POST['login'];
+$userPassword = password_hash($_POST['password'],PASSWORD_DEFAULT);
+$userEmail = $_POST['email'];
+$userName = $_POST['name'];
 
 $newUser = new UserReg($userLogin, $userPassword, $userEmail, $userName);
 $newUser->setDb($dbConnecton);

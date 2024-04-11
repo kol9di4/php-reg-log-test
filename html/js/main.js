@@ -10,6 +10,8 @@ $(function(){
         $(input.siblings('div.h6')).remove();
     }
 
+
+
     $('.log').on('submit',function(e){
         // e.preventDefault();
         // var login = $('.reg input[name="login"]');
@@ -38,6 +40,7 @@ $(function(){
 
         $.each($('.reg input'),function(){
             $(this).removeClass('is-invalid');
+            removeError($(this));
             if($(this).val()=="")
                 $(this).addClass('is-invalid');                
         });
@@ -84,8 +87,12 @@ $(function(){
             success: function (response) {
                 response = JSON.parse(response);
                 for (key in response){
-                    console.log(key);
-                    console.log(response[key]);
+                    switch(key){
+                        case 'login': addError(login,response[key]);break;
+                        case 'password': addError(password,response[key]);break;
+                        case 'name': addError(name,response[key]);break;
+                        case 'email': addError(email,response[key]);break;
+                    }
                 }
             },
             error: function (error) {

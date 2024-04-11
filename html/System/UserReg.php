@@ -22,7 +22,7 @@ class UserReg extends User{
         return $this->errors;
     }
 
-	public function checkUniqField(){
+	protected function checkUniqField(){
         foreach ($this->db->getRecords() as $record){
             if($record['email'] === $this->email)
                 $this->errors['email'] = 'Такой email уже существует!';
@@ -31,5 +31,7 @@ class UserReg extends User{
             }
         }
     }
+
+    
 
 }
