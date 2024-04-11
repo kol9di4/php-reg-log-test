@@ -32,55 +32,39 @@ $(function(){
         var passwordConf = $('.reg input[name="password-confirm"]');
         var name = $('.reg input[name="name"]');
         var ok = true;
+
         $.each($('.reg input'),function(){
+            $(this).removeClass('is-invalid');
             if($(this).val()=="")
-                $(this).addClass('is-invalid');
-            else
-                $(this).removeClass('is-invalid');
+                $(this).addClass('is-invalid');                
         });
-        if(email.val()=="" || login.val()=="" || password.val()=="" || passwordConf.val()=="" || name.val()=="")
-        {
+
+        if(email.val()=="" || login.val()=="" || password.val()=="" || passwordConf.val()=="" || name.val()==""){
             $('.reg div.h6').html('');
             $('.reg div.h6').html('Заполните все поля');
             ok = false;
         }
-        else
-        {
+        else{
             $('.reg div.h6').html('');
-            if (password.val().length<7)
-            {
+            if (password.val().length<7){
                 addError(password,'Пароль меньше 7 символов');
                 ok = false;
             }
-            else{
-                removeError(password);
-                if (password.val()!=passwordConf.val())
-                {
-                    addError(password,'Пароли не совпадают');
-                    addError(passwordConf,'Пароли не совпадают');
-                    ok = false;
-                }
-                else{
-                    removeError(password);
-                    removeError(passwordConf);
-                }
+            if (password.val()!=passwordConf.val()){
+                addError(password,'Пароли не совпадают');
+                addError(passwordConf,'Пароли не совпадают');
+                ok = false;
             }
 
-            if (login.val().length<4)
-            {
+            if (login.val().length<4){
                 addError(login,'Логин меньше 4 символов');
                 ok = false;
             }
-            else
-                removeError(login);
 
-            if (name.val().length<2)
-            {
+            if (name.val().length<2){
                 addError(name,'Имя меньше 2 символов');
                 ok = false;
             }
-            else
-                removeError(name);
         }
     });
     // END Register form validation
