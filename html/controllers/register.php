@@ -9,10 +9,10 @@ $userPassword = $_POST['password'];
 $userEmail = $_POST['email'];
 $userName = $_POST['name'];
 
-$newUser = new UserReg($userLogin, $userPassword, $userEmail, $userName);
-$newValidator = new UserFieldsValidator($userLogin, $userPassword, $userEmail, $userName);
-$newValidator->setDb($dbConnecton);
-$newUser->setValidator($newValidator);
+$newUser = (new UserReg($userLogin, $userPassword, $userEmail, $userName))->
+	setValidator((new UserFieldsValidator($userLogin, $userPassword, $userEmail, $userName))->
+		setDb($dbConnecton));
+
 $response = $newUser->userRegister();
 
 if(empty($response))

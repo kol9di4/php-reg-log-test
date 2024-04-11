@@ -12,8 +12,9 @@ class UserFieldsValidator extends User implements IFieldsValidator{
     protected $errors = [];
     private FileStorage $db;
 
-    public function setDb(FileStorage $fs){
+    public function setDb(FileStorage $fs):self{
         $this->db = $fs;
+        return $this;
     }
 
     public function isValid(): array{
