@@ -10,18 +10,48 @@ $(function(){
         $(input.siblings('div.h6')).remove();
     }
 
+    log = function(data)
+    {
+        // $.ajax({
+        //     url: "core/ajax-helper/login.php", 
+        //     type: "post",
+        //     data: data,
+        //     success: function (response) {
+        //         if (response==true){
+        //             $('#logInModal').modal('hide');
+        //             location. reload();
+        //         }
+        //         else{
+        //             $('.log button[type=submit] ~ div.h6').remove();
+        //             $('.log button[type=submit]').after('<div class="h6 text-danger">Неверный логин или пароль!</div>');
+        //         }
+        //     },
+        //     error: function (error) {},
+        //   });
+
+          $.ajax({
+            // url: "ajax-helper/register.php", 
+            url: "index.php?c=login", 
+            type: "post",
+            data: data,
+            success: function (response) {
+                response = JSON.parse(response);
+                $('.log button[type=submit]').after('<div class="h6 text-danger">'+response['message']+'</div>');
+            },
+            error: function (error) {
+                alert("Ошибка при отправке данных: ", error);
+            },
+        });        
+    }
+
     $('.log').on('submit',function(e){
-        // e.preventDefault();
-        // var login = $('.reg input[name="login"]');
-        // var password = $('.reg input[name="password"]');
-        // if(login.val()=="")
-        //     login.addClass('is-invalid');
-        // else
-        //     login.removeClass('is-invalid');
-        // if(password.val()=="")
-        //     password.addClass('is-invalid');
-        // else
-        //     password.removeClass('is-invalid');
+        e.preventDefault();
+        $('.log button[type=submit] ~ div.h6').remove();
+        const data = {
+            login: $('.log input[name=login]').val(),
+            password: $('.log input[name=password]').val()
+          };
+        log(data);
     })
     // Register form validation
     $('.reg').on('submit',function(e){

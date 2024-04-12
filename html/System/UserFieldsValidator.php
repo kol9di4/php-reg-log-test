@@ -3,16 +3,16 @@
 namespace System;
 
 use System\Contracts\IFieldsValidator;
+use System\Contracts\IStorage;
 use System\BaseClases\User;
-use System\FileStorage;
 
 
 class UserFieldsValidator extends User implements IFieldsValidator{
 
     protected $errors = [];
-    private FileStorage $db;
+    private IStorage $db;
 
-    public function setDb(FileStorage $fs):self{
+    public function setDb(IStorage $fs):self{
         $this->db = $fs;
         return $this;
     }
