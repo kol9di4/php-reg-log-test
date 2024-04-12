@@ -2,7 +2,6 @@
 
 namespace System;
 
-use IField;
 use System\BaseClases\User;
 use System\Contracts\IFieldsValidator;
 
@@ -18,7 +17,7 @@ class UserReg extends User{
     public function userRegister():array{
         $errors =$this->validator->isValid();
         if(empty($errors)){
-            $this->password = password_hash($this->password,PASSWORD_DEFAULT);
+            $this->password = password_hash($this->password,PASSWORD_BCRYPT);
             return [];
         }
 
