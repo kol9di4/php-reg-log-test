@@ -2,9 +2,9 @@
 
 namespace System;
 
-use System\Exceptions;
+use System\Contracts\IStorage;
 
-class FileStorage {
+class FileStorage implements IStorage{
 	protected array $records = [];
 	protected int $ai = 0;
 	protected string $dbPath;
@@ -28,7 +28,7 @@ class FileStorage {
 		}
 	}
 	
-	public function getRecords(){
+	public function getRecords() : ?array{
 		return $this->records;
 	}
 

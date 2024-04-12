@@ -10,7 +10,7 @@ use System\BaseClases\User;
 class UserFieldsValidator extends User implements IFieldsValidator{
 
     protected $errors = [];
-    private IStorage $db;
+    protected IStorage $db;
 
     public function setDb(IStorage $fs):self{
         $this->db = $fs;

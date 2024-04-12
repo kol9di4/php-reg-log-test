@@ -1,10 +1,17 @@
 <?php
 
 use System\UserLogin;
-use System\UserFieldsValidator;
+use System\UserFieldsLoginHelper;
 
 
-$userLogin = $_POST['login'];
-$userPassword = $_POST['password'];
+$userLogin = trim($_POST['login']);
+$userPassword = trim($_POST['password']);
 
-$newUserForLogin = new UserLogin($userLogin, $userPassword, '','');
+$newUserForLogin = (new UserLogin($userLogin, $userPassword, '',''))->
+	setValidator((new UserFieldsLoginHelper($userLogin, $userPassword, '', ''))->
+		setDb($dbConnecton));
+
+$response = $newUserForLogin->login();
+
+echo json_encode($response);
+exit();

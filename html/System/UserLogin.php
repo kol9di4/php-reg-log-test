@@ -3,19 +3,23 @@
 namespace System;
 
 use System\BaseClases\User;
-use System\Contracts\IStorage;
+use System\UserFieldsLoginHelper as UFLH;
 
 class UserLogin extends User{
 
-    protected IStorage $db;
+    protected UFLH $helper;
 
-    public function setDb(IStorage $fs):self{
-        $this->db = $fs;
+    public function setValidator(UFLH $helper):self{
+        $this->helper = $helper;
         return $this;
     }
 
-    public function isUserExists(){
+    public function login(){
+        $errors = $this->helper->isUserExists();
+        // if(empty($errors)){
 
+        // }
+        return $errors;
     }
-
+    
 }

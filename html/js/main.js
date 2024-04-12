@@ -12,31 +12,15 @@ $(function(){
 
     log = function(data)
     {
-        // $.ajax({
-        //     url: "core/ajax-helper/login.php", 
-        //     type: "post",
-        //     data: data,
-        //     success: function (response) {
-        //         if (response==true){
-        //             $('#logInModal').modal('hide');
-        //             location. reload();
-        //         }
-        //         else{
-        //             $('.log button[type=submit] ~ div.h6').remove();
-        //             $('.log button[type=submit]').after('<div class="h6 text-danger">Неверный логин или пароль!</div>');
-        //         }
-        //     },
-        //     error: function (error) {},
-        //   });
-
           $.ajax({
-            // url: "ajax-helper/register.php", 
             url: "index.php?c=login", 
             type: "post",
             data: data,
             success: function (response) {
                 response = JSON.parse(response);
-                $('.log button[type=submit]').after('<div class="h6 text-danger">'+response['message']+'</div>');
+                if (!(response === undefined || response.length == 0)){
+                    $('.log button[type=submit]').after('<div class="h6 text-danger">'+response['message']+'</div>');
+                }
             },
             error: function (error) {
                 alert("Ошибка при отправке данных: ", error);
@@ -106,6 +90,7 @@ $(function(){
 
         if(!ok)
             return false;
+
         const data = {
             login: login.val(),
             password: password.val(),
