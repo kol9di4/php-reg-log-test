@@ -3,8 +3,26 @@
 include_once('ini.php');
 
 use System\FileStorage;
+use System\AutoLogin;
 
 $dbConnecton = FileStorage::getInstance('DataBase/db.json');
+$dbConnectionSession = FileStorage::getInstance('DataBase/sessions.json');
+$title = "Base Title";
+
+$userName = null;
+$token = $_SESSION['token'] ?? $_COOKIE['token'] ?? null;
+if ($token != null){
+    $autoLogin = new AutoLogin($dbConnecton, $dbConnectionSession, $token);
+    $userName = $autoLogin->gethUserName();
+}
+
+if($userName === null){
+    unset($_SESSION['token']);
+    setcookie('token','',-2,'index.php');
+}
+
+var_dump($userName);
+
 
 // $password = password_hash('admin',PASSWORD_DEFAULT);
 
@@ -45,9 +63,10 @@ $path = "controllers/$cname.php";
 if(checkControllerName($cname) && file_exists($path)){
 	include_once($path);
 }
-$header = template('views/header/v_index');
+$header = template('views/header/v_index',);
 
 $html = template('views/base/v_main', [
+    'title'=>$title,
     'header'=>$header,
 ]);
 
