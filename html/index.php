@@ -13,7 +13,7 @@ $userName = null;
 $token = $_SESSION['token'] ?? $_COOKIE['token'] ?? null;
 if ($token != null){
     $autoLogin = new AutoLogin($dbConnecton, $dbConnectionSession, $token);
-    $userName = $autoLogin->gethUserName();
+    $userName = $autoLogin->getUserName();
 }
 
 if($userName === null){
@@ -21,30 +21,6 @@ if($userName === null){
     setcookie('token','',-2,'index.php');
 }
 
-// var_dump($userName);
-
-
-// $password = password_hash('admin',PASSWORD_DEFAULT);
-
-// $dbConnecton->create([
-//     'login' => 'admin',
-//     'password' => $password,
-//     'email' => 'admin@admin',
-//     'name' => 'Vasya'
-// ]);
-// /////////////////////////////////////////
-// $pass1 = $dbConnecton->get(3)['password'];
-// $pass2 = $dbConnecton->get(2)['password'];
-// echo '<pre>';
-// var_dump($pass1);
-// var_dump($pass2);
-// echo '</pre>';
-// if (password_verify('admin', $pass1)) {
-//     echo '2 ok';
-// } 
-// if (password_verify('admin', $pass2)) {
-//     echo '3 ok';
-// } 
 function checkControllerName(string $name) : bool{
     return !!preg_match('/^[aA-zZ0-9_-]+$/', $name);
 }
@@ -57,7 +33,6 @@ function template(string $path, array $vars = []) : string{
     return ob_get_clean();
 }
 
-
 $cname = $_GET['c'] ?? 'index';
 $path = "controllers/$cname.php";
 if(checkControllerName($cname) && file_exists($path)){
@@ -65,9 +40,9 @@ if(checkControllerName($cname) && file_exists($path)){
 }
 
 if ($userName === null)
-    $header = template('views/header/v_index',);
+    $header = template('views/header/v_index');
 else
-    $header = '';
+$header = template('views/header/v_login',['userName'=>$userName]);
 
 $html = template('views/base/v_main', [
     'title'=>$title,

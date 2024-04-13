@@ -24,7 +24,7 @@ class AutoLogin {
         return $id;
     }
 
-    public function getUserName() : ?string{
+    public function gethUserName() : ?string{
         $id = $this->gethUserId();
         $name = $this->userDb->get($id)['name'];
 
