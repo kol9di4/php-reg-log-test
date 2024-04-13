@@ -12,6 +12,13 @@ class AutoLogin {
         protected $token
     ){}
 
+    public function getUserName() : ?string{
+        $id = $this->gethUserId();
+        $name = $this->userDb->get($id)['name'];
+
+        return $name;
+    }
+    
     protected function gethUserId():?int{
         $records = $this->sessionsDb->getRecords();
         $id = null;
@@ -23,12 +30,4 @@ class AutoLogin {
 
         return $id;
     }
-
-    public function getUserName() : ?string{
-        $id = $this->gethUserId();
-        $name = $this->userDb->get($id)['name'];
-
-        return $name;
-    }
-
 }
