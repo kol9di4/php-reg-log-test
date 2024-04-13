@@ -17,7 +17,7 @@ class AutoLogin {
         $id = null;
         foreach ($records as $key=>$record){
             if ($record['token'] === $this->token){
-                $id = $key;
+                $id = $record['id_user'];
             }
         }
 

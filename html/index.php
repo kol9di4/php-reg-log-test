@@ -21,7 +21,7 @@ if($userName === null){
     setcookie('token','',-2,'index.php');
 }
 
-var_dump($userName);
+// var_dump($userName);
 
 
 // $password = password_hash('admin',PASSWORD_DEFAULT);
@@ -63,7 +63,11 @@ $path = "controllers/$cname.php";
 if(checkControllerName($cname) && file_exists($path)){
 	include_once($path);
 }
-$header = template('views/header/v_index',);
+
+if ($userName === null)
+    $header = template('views/header/v_index',);
+else
+    $header = '';
 
 $html = template('views/base/v_main', [
     'title'=>$title,
