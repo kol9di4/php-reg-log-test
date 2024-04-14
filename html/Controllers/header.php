@@ -1,6 +1,7 @@
 <?php
 
 use System\Core\AutoLogin;
+use System\Core\Template;
 
 $userName = null;
 $token = $_SESSION['token'] ?? $_COOKIE['token'] ?? null;
@@ -15,6 +16,6 @@ if($userName === null){
 }
 
 if ($userName === null)
-    $header = template('Views/Header/v_index');
+    $header = Template::template('Views/Header/v_index');
 else
-    $header = template('Views/Header/v_login',['userName'=>$userName]);
+    $header = Template::template('Views/Header/v_login',['userName'=>$userName]);
