@@ -4,37 +4,48 @@ namespace System;
 
 use System\BaseClases\User;
 use System\Contracts\IStorage;
-use System\UserFieldsLoginHelper as UFLH;
 
 class UserLogin extends User{
 
-    protected UFLH $helper;
+    protected IStorage $usersDb;
     protected IStorage $sessionsDb;
-    protected $token;
+    protected string $token;
 
-    public function setDb(IStorage $fs):self{
-        $this->sessionsDb = $fs;
-        return $this;
-    }
-
-    public function setValidator(UFLH $helper):self{
-        $this->helper = $helper;
-        return $this;
-    }
+    function __construct($login, $password, $usersDb, $sessionsDb){
+        parent::__construct($login, $password);
+        $this->usersDb = $usersDb;
+        $this->sessionsDb = $sessionsDb;
+    }    
 
     public function login(){
-        $responce = $this->helper->isUserExists();
+        $responce = $this->isUserExists();
+        
         if(isset($responce['id'])){
-            $tocken = substr(bin2hex(random_bytes(128)),0,128);
+            $token = substr(bin2hex(random_bytes(128)),0,128);
             $this->sessionsDb->create([
                 'id_user' => $responce['id'],
-                'token' => $tocken
+                'token' => $token
             ]);
-            $_SESSION['token'] = $tocken;
-            setcookie('token',$tocken,time()+3600*24*30);
+            $_SESSION['token'] = $token;
+            setcookie('token', $token, time()+3600*24*30);
+
             return [];
         }
+
         return $responce;
+    }
+
+    public function isUserExists(){
+        $errors = ['message'=>'Пользователь с таким email/login не найден или вы ввели неверный пароль'];
+
+        foreach ($this->usersDb->getRecords() as $key=>$record){
+            $isUserExists = ($record['login'] === $this->login || $record['email'] === $this->login);
+            if ($isUserExists && password_verify($this->password, $record['password'])){
+                return ['id'=>$key];
+            }
+        }
+
+        return $errors;
     }
     
 }

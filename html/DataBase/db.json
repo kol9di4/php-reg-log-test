@@ -11,7 +11,19 @@
             "password": "$2y$10$P7e.f8cHjqBz6W6yaJrkBOmLjB8Z1bDd34lelKk\/g6UCsW1e23XD.",
             "email": "Divas0308@mail.ru",
             "name": "admin"
+        },
+        "3": {
+            "login": "asdasdasdas!W12",
+            "password": "$2y$10$cEp.yMXiHefyjzlSvppGoeo0ZpicQoWh5uSR79Nc9WQTYFAo7vgX6",
+            "email": "asdfsasfdasdf@sdfasdf.ru",
+            "name": "qw"
+        },
+        "4": {
+            "login": "asdasdasdasd123QW#",
+            "password": "$2y$10$ZPIwfcSLpV3QdXhwpLjqDO2ZeqZs8u\/7WGPhd8L0MawLyZ21lu7T2",
+            "email": "asdasd@asdas.com",
+            "name": "sdf"
         }
     },
-    "ai": 2
+    "ai": 4
 }

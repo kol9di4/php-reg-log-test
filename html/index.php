@@ -4,7 +4,7 @@ include_once('ini.php');
 
 use System\FileStorage;
 
-$dbConnecton = FileStorage::getInstance('DataBase/db.json');
+$dbConnection = FileStorage::getInstance('DataBase/db.json');
 $dbConnectionSession = FileStorage::getInstance('DataBase/sessions.json');
 $title = "Base Title";
 $header = '';

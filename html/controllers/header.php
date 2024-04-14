@@ -5,7 +5,7 @@ use System\AutoLogin;
 $userName = null;
 $token = $_SESSION['token'] ?? $_COOKIE['token'] ?? null;
 if ($token != null){
-    $autoLogin = new AutoLogin($dbConnecton, $dbConnectionSession, $token);
+    $autoLogin = new AutoLogin($dbConnection, $dbConnectionSession, $token);
     $userName = $autoLogin->getUserName();
 }
 
