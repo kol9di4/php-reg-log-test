@@ -9,6 +9,7 @@ class Template{
         extract($vars);
         ob_start();
         include($systemTemplateRenererIntoFullPath);
+        
         return ob_get_clean();
     }
 
