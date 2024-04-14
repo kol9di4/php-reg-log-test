@@ -13,9 +13,7 @@
 
 Регистрация проходит с валидацией полей как на стороне клиента, так и на стороне сервера, формы отправляются при помощи AJAX. Сервер отвечает в формате json. База данных реализована посредством json файлов. База данных включает в себя два файла: таблица пользователей и таблица сессий. Пароли в таблице хранятся в зашифрованном виде. 
 
-## Screenshots
-
-<img src="" />## Built With
+## Built With
 
 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" height="40px" width="40px" /></a><a href="https://developer.mozilla.org/en-US/docs/Web/HTML"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" height="40px" width="40px" /></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" height="40px" width="40px" /></a><a href="https://jquery.com/"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/jquery/jquery-original.svg" height="40px" width="40px" /></a><a href="https://www.php.net/docs.php"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" height="40px" width="40px" /></a>
 
