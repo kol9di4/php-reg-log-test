@@ -21,6 +21,8 @@ $(function(){
                 if (!(response === undefined || response.length == 0)){
                     $('.log button[type=submit]').after('<div class="h6 text-danger">'+response['message']+'</div>');
                 }
+                else
+                    location. reload();
             },
             error: function (error) {
                 alert("Ошибка при отправке данных: ", error);
@@ -99,7 +101,6 @@ $(function(){
         };
 
         $.ajax({
-            // url: "ajax-helper/register.php", 
             url: "index.php?c=register", 
             type: "post",
             data: data,
@@ -113,6 +114,11 @@ $(function(){
                         case 'email': addError(email,response[key]);break;
                     }
                 }
+                if (response.length ==0 || response === undefined)
+                    log({
+                        login: login.val(),
+                        password: password.val(),
+                    });
             },
             error: function (error) {
                 alert("Ошибка при отправке данных: ", error);
@@ -120,5 +126,16 @@ $(function(){
         });        
     });
     // END Register form validation
-
+    $('#log-out-button').on('click',function(){
+        $.ajax({
+            url: "index.php?c=logout", 
+            type: "post",
+            success: function (response) {
+                location. reload();
+            },
+            error: function (error) {
+              console.error("Ошибка при отправке данных: ", error);
+            },
+        });
+    })
 })
