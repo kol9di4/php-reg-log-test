@@ -4,14 +4,21 @@ namespace Models;
 
 use System\BaseClases\User;
 use System\Core\FieldsValidator as FV;
-use System\Core\FileStorage;
+use System\Contracts\IStorage;
 
 class UserReg extends User{
     
     protected string $email;
     protected string $name;
-    protected FileStorage $db;
+    protected IStorage $db;
 
+    /**
+     * @param string $login
+     * @param string $password
+     * @param string $login
+     * @param string $name
+     * @param IStorage $usersdb
+     */
     function __construct($login, $password, $email, $name, $db){
        parent::__construct($login, $password);
        $this->email = $email;
@@ -30,6 +37,9 @@ class UserReg extends User{
         return $errors;
     }
 
+    /**
+     * @return array with all class fields
+     */
     public function collectInfo():array
     {
         return [

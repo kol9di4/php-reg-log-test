@@ -11,13 +11,19 @@ class UserLogin extends User{
     protected IStorage $sessionsDb;
     protected string $token;
 
+    /**
+     * @param string $login
+     * @param string $password
+     * @param IStorage $usersdb
+     * @param IStorage $sessionsdb
+     */
     function __construct($login, $password, $usersDb, $sessionsDb){
         parent::__construct($login, $password);
         $this->usersDb = $usersDb;
         $this->sessionsDb = $sessionsDb;
     }    
 
-    public function login(){
+    public function login() : array{
         $responce = $this->isUserExists();
         
         if(isset($responce['id'])){
@@ -35,7 +41,7 @@ class UserLogin extends User{
         return $responce;
     }
 
-    public function isUserExists(){
+    public function isUserExists() : array{
         $errors = ['message'=>'Пользователь с таким email/login не найден или вы ввели неверный пароль'];
 
         foreach ($this->usersDb->getRecords() as $key=>$record){

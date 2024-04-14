@@ -8,6 +8,11 @@ class Auth {
 
     protected string $token;
 
+
+    /**
+     * @param IStorage $usersdb
+     * @param IStorage $sessionsdb
+     */
     public function __construct(
         protected IStorage $userDb,
         protected IStorage $sessionsDb
@@ -28,7 +33,7 @@ class Auth {
         $this->token  = $_SESSION['token'] ?? $_COOKIE['token'] ?? '';
     }
 
-    protected function gethUserId():?int{
+    protected function gethUserId() : ?int{
         $records = $this->sessionsDb->getRecords();
         $id = null;
         foreach ($records as $record){
