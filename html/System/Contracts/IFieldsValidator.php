@@ -4,6 +4,9 @@ namespace System\Contracts;
 
 interface IFieldsValidator{
     
-    public function isValid() : array;
+    public static function loginValidation($login) : array;
+    public static function passwordValidation($password) : array;
+    public static function emailValidation($email) : array;
+    public static function nameValidation($name) : array;
 
 }

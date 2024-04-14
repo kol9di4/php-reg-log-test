@@ -30,6 +30,9 @@ $(function(){
         });        
     }
 
+    //отключить блокировку кнопок при неработающем JS
+    $('button[type=submit]').removeAttr('disabled');
+
     $('.log').on('submit',function(e){
         e.preventDefault();
         $('.log button[type=submit] ~ div.h6').remove();

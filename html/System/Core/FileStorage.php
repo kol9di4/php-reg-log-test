@@ -1,10 +1,11 @@
 <?php
 
-namespace System;
+namespace System\Core;
 
 use System\Contracts\IStorage;
 
 class FileStorage implements IStorage{
+
 	protected array $records = [];
 	protected int $ai = 0;
 	protected string $dbPath;
@@ -14,7 +15,7 @@ class FileStorage implements IStorage{
 		if(!isset(self::$instances[$dbPath])){
 			self::$instances[$dbPath] = new self($dbPath);
 		}
-
+		
 		return self::$instances[$dbPath];
 	}
 
@@ -69,4 +70,5 @@ class FileStorage implements IStorage{
 			'ai' => $this->ai
 		]));
 	}
+
 }
