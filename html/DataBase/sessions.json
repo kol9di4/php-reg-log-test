@@ -1,17 +1,1 @@
-{
-    "records": {
-        "1": {
-            "id_user": 1,
-            "token": "1bfc8359b16314dfa673828a1733a08f4f7da1caef6b27cc9c62f234ded37c1cc3482c0b2df2926f458826c89651bb16e33df7b09aef98c912ca2d4f1cc56537"
-        },
-        "2": {
-            "id_user": 1,
-            "token": "e3fc7f224a39757a99a3c4c2b6a254a67ec2b4abd98d0a8428c69da6d0fcda15a343d57b6c05043b9e46b7008e9c4017d44d268ad358fceeb96d015cd254dda5"
-        },
-        "3": {
-            "id_user": 1,
-            "token": "37bcaea6d3e31353240ee9e409a7ec510ed024a4bf67999256b436648b5ddf1aa829dd2e6b677bed34d17269af9b6031e8b55adb77b85e98b52320c716738d6b"
-        }
-    },
-    "ai": 3
-}
+{"records":{"1":{"id_user":1,"token":"1bfc8359b16314dfa673828a1733a08f4f7da1caef6b27cc9c62f234ded37c1cc3482c0b2df2926f458826c89651bb16e33df7b09aef98c912ca2d4f1cc56537"},"2":{"id_user":1,"token":"e3fc7f224a39757a99a3c4c2b6a254a67ec2b4abd98d0a8428c69da6d0fcda15a343d57b6c05043b9e46b7008e9c4017d44d268ad358fceeb96d015cd254dda5"},"3":{"id_user":1,"token":"37bcaea6d3e31353240ee9e409a7ec510ed024a4bf67999256b436648b5ddf1aa829dd2e6b677bed34d17269af9b6031e8b55adb77b85e98b52320c716738d6b"},"4":{"id_user":1,"token":"d5574954f4ad5f22c8f729f16693c712c30ac3823d4dd7f13f70956687414b31b8e3e725662fe6d7d7e5bcc795926f508c3d94c16973b6ea59927e75f76d99b4"},"5":{"id_user":1,"token":"5e34a4d47a4860b980de5fcf988dfb6cce04101d99f9a050f53962e9acd23fd53c352ff7993f9a6b6329994b08e81efc4340a1b32899ca604f4629c8541ae671"}},"ai":5}

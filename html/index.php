@@ -3,23 +3,12 @@
 include_once('ini.php');
 
 use System\FileStorage;
-use System\AutoLogin;
 
 $dbConnecton = FileStorage::getInstance('DataBase/db.json');
 $dbConnectionSession = FileStorage::getInstance('DataBase/sessions.json');
 $title = "Base Title";
+$header = '';
 
-$userName = null;
-$token = $_SESSION['token'] ?? $_COOKIE['token'] ?? null;
-if ($token != null){
-    $autoLogin = new AutoLogin($dbConnecton, $dbConnectionSession, $token);
-    $userName = $autoLogin->getUserName();
-}
-
-if($userName === null){
-    unset($_SESSION['token']);
-    setcookie('token','',-2,'index.php');
-}
 
 function checkControllerName(string $name) : bool{
     return !!preg_match('/^[aA-zZ0-9_-]+$/', $name);
@@ -39,10 +28,7 @@ if(checkControllerName($cname) && file_exists($path)){
 	include_once($path);
 }
 
-if ($userName === null)
-    $header = template('views/header/v_index');
-else
-$header = template('views/header/v_login',['userName'=>$userName]);
+include_once("controllers/header.php");
 
 $html = template('views/base/v_main', [
     'title'=>$title,
