@@ -1,6 +1,6 @@
 <?php
 
-use System\AutoLogin;
+use System\Core\AutoLogin;
 
 $userName = null;
 $token = $_SESSION['token'] ?? $_COOKIE['token'] ?? null;

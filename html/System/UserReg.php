@@ -3,8 +3,8 @@
 namespace System;
 
 use System\BaseClases\User;
-use System\FieldsValidator as FV;
-use System\FileStorage;
+use System\Core\FieldsValidator as FV;
+use System\Core\FileStorage;
 
 class UserReg extends User{
     

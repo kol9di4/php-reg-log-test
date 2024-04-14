@@ -1,6 +1,6 @@
 <?php
 
-namespace System;
+namespace System\Core;
 
 use System\Contracts\IStorage;
 
@@ -12,10 +12,17 @@ class AutoLogin {
         protected $token
     ){}
 
+    public function getUserName() : ?string{
+        $id = $this->gethUserId();
+        $name = $this->userDb->get($id)['name'];
+
+        return $name;
+    }
+    
     protected function gethUserId():?int{
         $records = $this->sessionsDb->getRecords();
         $id = null;
-        foreach ($records as $key=>$record){
+        foreach ($records as $record){
             if ($record['token'] === $this->token){
                 $id = $record['id_user'];
             }
@@ -23,12 +30,4 @@ class AutoLogin {
 
         return $id;
     }
-
-    public function gethUserName() : ?string{
-        $id = $this->gethUserId();
-        $name = $this->userDb->get($id)['name'];
-
-        return $name;
-    }
-
 }

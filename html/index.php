@@ -2,7 +2,7 @@
 
 include_once('ini.php');
 
-use System\FileStorage;
+use System\Core\FileStorage;
 
 $dbConnection = FileStorage::getInstance('DataBase/db.json');
 $dbConnectionSession = FileStorage::getInstance('DataBase/sessions.json');

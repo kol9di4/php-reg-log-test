@@ -1,6 +1,6 @@
 <?php
 
-namespace System\Exceptions;
+namespace System;
 
 use Exception;
 
