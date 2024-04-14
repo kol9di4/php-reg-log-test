@@ -4,21 +4,30 @@ namespace System\Core;
 
 use System\Contracts\IStorage;
 
-class AutoLogin {
+class Auth {
+
+    protected string $token;
 
     public function __construct(
         protected IStorage $userDb,
-        protected IStorage $sessionsDb,
-        protected $token
+        protected IStorage $sessionsDb
     ){}
 
     public function getUserName() : ?string{
-        $id = $this->gethUserId();
-        $name = $this->userDb->get($id)['name'];
+        $this->setToken();
+        if($this->token !== ''){
+            $id = $this->gethUserId();
+            $name = $this->userDb->get($id)['name'];
+            return $name;
+        }
 
-        return $name;
+        return '';
     }
     
+    protected function setToken(){
+        $this->token  = $_SESSION['token'] ?? $_COOKIE['token'] ?? '';
+    }
+
     protected function gethUserId():?int{
         $records = $this->sessionsDb->getRecords();
         $id = null;

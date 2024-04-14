@@ -4,6 +4,9 @@ include_once('ini.php');
 
 use System\Core\FileStorage;
 use System\Core\Template;
+use Controllers\Header;
+use Controllers\Index;
+use System\Core\Auth;
 
 $dbConnection = FileStorage::getInstance('DataBase/db.json');
 $dbConnectionSession = FileStorage::getInstance('DataBase/sessions.json');
@@ -21,13 +24,14 @@ if(checkControllerName($cname) && file_exists($path)){
 	include_once($path);
 }
 
-include_once("Controllers/header.php");
+// include_once("Controllers/header.php");
+$header = new Header(new Auth($dbConnection, $dbConnectionSession));
 
-$html = Template::template('Views/Base/v_main', [
-    'title'=>$title,
-    'header'=>$header,
-]);
+$headerHtml = $header->render();
 
-
-
+$html = (new Index($headerHtml))->render();
 echo $html;
+
+
+
+

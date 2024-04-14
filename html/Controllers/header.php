@@ -1,12 +1,11 @@
 <?php
 
-use System\Core\AutoLogin;
+use System\Core\Auth;
 use System\Core\Template;
 
 $userName = null;
-$token = $_SESSION['token'] ?? $_COOKIE['token'] ?? null;
 if ($token != null){
-    $autoLogin = new AutoLogin($dbConnection, $dbConnectionSession, $token);
+    $autoLogin = new Auth($dbConnection, $dbConnectionSession);
     $userName = $autoLogin->getUserName();
 }
 
