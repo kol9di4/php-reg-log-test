@@ -2,19 +2,24 @@
 
 use Models\UserReg;
 
-$userLogin = $_POST['login'];
-$userPassword = $_POST['password'];
-$userEmail = $_POST['email'];
-$userName = $_POST['name'];
+if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) 
+&& !empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+ && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 
-$newUser = (new UserReg($userLogin, $userPassword, $userEmail, $userName, $dbConnection));
+	$userLogin = $_POST['login'];
+	$userPassword = $_POST['password'];
+	$userEmail = $_POST['email'];
+	$userName = $_POST['name'];
 
-$response = $newUser->userRegister();
+	$newUser = (new UserReg($userLogin, $userPassword, $userEmail, $userName, $dbConnection));
 
-if(empty($response))
-{
-	$dbConnection->create($newUser->collectInfo());
+	$response = $newUser->userRegister();
+
+	if(empty($response))
+	{
+		$dbConnection->create($newUser->collectInfo());
+	}
+
+	echo json_encode($response);
+	exit();
 }
-
-echo json_encode($response);
-exit();

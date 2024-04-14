@@ -2,12 +2,18 @@
 
 use Models\UserLogin;
 
-$userLogin = trim($_POST['login']);
-$userPassword = trim($_POST['password']);
+if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) 
+&& !empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+ && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 
-$newUserForLogin = (new UserLogin($userLogin, $userPassword, $dbConnection, $dbConnectionSession));
+    $userLogin = trim($_POST['login']);
+    $userPassword = trim($_POST['password']);
 
-$response = $newUserForLogin->login();
+    $newUserForLogin = (new UserLogin($userLogin, $userPassword, $dbConnection, $dbConnectionSession));
 
-echo json_encode($response);
-exit();
+    $response = $newUserForLogin->login();
+
+    echo json_encode($response);
+    exit();
+
+}

@@ -1,8 +1,13 @@
 <?php
 
-$token = $_SESSION['token'] ?? $_COOKIE['token'];
+if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) 
+&& !empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+ && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 
-unset($_SESSION['token']);
-setcookie('token','',-2,'index.php');
+    $token = $_SESSION['token'] ?? $_COOKIE['token'];
+    unset($_SESSION['token']);
+    setcookie('token','',-2,'index.php');
 
-exit();
+    exit();
+    
+}
