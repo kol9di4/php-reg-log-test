@@ -22,4 +22,3 @@ $headerHtml = $header->render();
 $html = (new Index($headerHtml))->render();
 
 echo $html;
-
