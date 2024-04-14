@@ -19,6 +19,7 @@ if($controlName && file_exists($path)){
 
 $header = new Header(new Auth($dbConnection, $dbConnectionSession));
 $headerHtml = $header->render();
-
 $html = (new Index($headerHtml))->render();
+
 echo $html;
+
