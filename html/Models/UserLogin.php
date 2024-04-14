@@ -1,6 +1,6 @@
 <?php
 
-namespace System;
+namespace Models;
 
 use System\BaseClases\User;
 use System\Contracts\IStorage;

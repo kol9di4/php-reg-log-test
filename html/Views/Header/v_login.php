@@ -4,7 +4,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse ms-auto" id="nav_lc">
-            <h6 class="me-2 mb-2">Приветствуем, <span class="h4"><b> <?=$userName?> </b></span> </h6>
+            <h4 class="me-2 mb-2">Hello, <b> <?=$userName?> </b></h6>
             <a class="btn btn-outline-secondary me-1" href="#" id="log-out-button">Log out</a>
         </div>
     </div>

@@ -23,14 +23,14 @@ function template(string $path, array $vars = []) : string{
 }
 
 $cname = $_GET['c'] ?? 'index';
-$path = "controllers/$cname.php";
+$path = "Controllers/$cname.php";
 if(checkControllerName($cname) && file_exists($path)){
 	include_once($path);
 }
 
-include_once("controllers/header.php");
+include_once("Controllers/header.php");
 
-$html = template('views/base/v_main', [
+$html = template('Views/Base/v_main', [
     'title'=>$title,
     'header'=>$header,
 ]);

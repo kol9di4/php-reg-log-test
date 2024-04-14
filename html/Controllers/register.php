@@ -1,8 +1,6 @@
 <?php
 
-
-use System\UserReg;
-use System\UserFieldsValidator;
+use Models\UserReg;
 
 $userLogin = $_POST['login'];
 $userPassword = $_POST['password'];

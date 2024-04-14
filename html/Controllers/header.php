@@ -15,6 +15,6 @@ if($userName === null){
 }
 
 if ($userName === null)
-    $header = template('views/header/v_index');
+    $header = template('Views/Header/v_index');
 else
-    $header = template('views/header/v_login',['userName'=>$userName]);
+    $header = template('Views/Header/v_login',['userName'=>$userName]);

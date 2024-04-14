@@ -1,6 +1,6 @@
 <?php
 
-use System\UserLogin;
+use Models\UserLogin;
 
 $userLogin = trim($_POST['login']);
 $userPassword = trim($_POST['password']);
