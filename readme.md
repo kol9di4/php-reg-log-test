@@ -1,5 +1,4 @@
-![License](https://img.shields.io/github/license/kol9di4/php-reg-log-test.svg?style=for-the-badge) ![Repo Size](https://img.shields.io/github/languages/code-size/kol9di4/php-reg-log-test.svg?style=for-the-badge) ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/kol9di4/php-reg-log-test.svg?style=for-the-badge) ![FORKS](https://img.shields.io/github/forks/kol9di4/php-reg-log-test.svg?style=for-the-badge&social) ![Stars](https://img.shields.io/github/stars/kol9di4/php-reg-log-test.svg?style=for-the-badge)
-    
+![Repo Size](https://img.shields.io/github/languages/code-size/kol9di4/php-reg-log-test.svg?style=for-the-badge) ![TOP_LANGUAGE](https://img.shields.io/github/languages/top/kol9di4/php-reg-log-test.svg?style=for-the-badge) 
 # Модуль для регистрации и авторизации
 
 ## Table of Contents
